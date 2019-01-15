@@ -27,11 +27,19 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    piecebutton.cpp
+    piecebutton.cpp \
+    playground.cpp \
+    slot.cpp \
+    piece.cpp \
+    player.cpp
 
 HEADERS += \
         mainwindow.h \
-    piecebutton.h
+    piecebutton.h \
+    playground.h \
+    slot.h \
+    piece.h \
+    player.h
 
 FORMS += \
         mainwindow.ui

@@ -25,6 +25,9 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
+      <layout class="QHBoxLayout" name="row_19"/>
+     </item>
+     <item>
       <layout class="QHBoxLayout" name="row_0"/>
      </item>
      <item>
@@ -68,6 +71,18 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="row_14"/>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="row_15"/>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="row_16"/>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="row_17"/>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="row_18"/>
      </item>
     </layout>
    </widget>

@@ -23,12 +23,12 @@ public:
         return this;
     }
     PieceButton* setBlack() {
-        this->setStyleSheet("background-color: #000; border-radius: 3px; width: 40px; height: 40px;");
+        this->setStyleSheet("background-color: #000; border-radius: 3px; width: 40px; height: 40px; max-height: 40px; max-width: 40px;");
         this->m_placed = true;
         return this;
     }
     PieceButton* setWhite() {
-        this->setStyleSheet("background-color: #fff; border-radius: 3px; width: 40px; height: 40px;");
+        this->setStyleSheet("background-color: #fff; border-radius: 3px; width: 40px; height: 40px; max-height: 40px; max-width: 40px;");
         this->m_placed = true;
         return this;
     }

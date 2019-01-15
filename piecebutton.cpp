@@ -6,5 +6,5 @@ PieceButton::PieceButton(int positionX, int positionY, QWidget *parent)
     , positionY(positionY)
 {
     connect(this, SIGNAL(clicked(bool)), this, SLOT(onClicked()));
-    this->setStyleSheet("background-color: #acacac; border-radius: 3px; width: 40px; height: 40px;");
+    this->setStyleSheet("background-color: #acacac; border-radius: 3px; width: 40px; height: 40px; max-height: 40px; max-width: 40px;");
 }
