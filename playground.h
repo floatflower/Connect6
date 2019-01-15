@@ -35,8 +35,8 @@ public:
             int x = rand() % 19;
             int y = rand() % 19;
             this->updateSlot(x, y, pieceColor);
-            qDebug() << "Choose: " << x << " " << y;
-            emit newPieceLocated(x, y, pieceColor);
+            qDebug() << "Choose: x:" << x << " y:" << y;
+            emit newPieceLocated(y, x, pieceColor);
         }
     }
 signals:
