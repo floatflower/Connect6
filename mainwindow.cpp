@@ -70,16 +70,18 @@ MainWindow::MainWindow(QWidget *parent) :
     m_blackPlayerSelector->addButton("電腦", QMessageBox::YesRole);
     m_blackPlayerSelector->addButton("玩家", QMessageBox::NoRole);
     m_blackPlayerSelector->show();
-    connect(m_blackPlayerSelector, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(onPlayerRoleChosen(QAbstractButton*)));
+    connect(m_blackPlayerSelector, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(onBlackPlayerRoleChosen(QAbstractButton*)));
 
     m_whitePlayerSelector = new QMessageBox(this);
     m_whitePlayerSelector->setText("執白玩家為?");
     m_whitePlayerSelector->addButton("電腦", QMessageBox::YesRole);
     m_whitePlayerSelector->addButton("玩家", QMessageBox::NoRole);
     m_whitePlayerSelector->show();
-    connect(m_whitePlayerSelector, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(onPlayerRoleChosen(QAbstractButton*)));
+    connect(m_whitePlayerSelector, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(onWhitePlayerRoleChosen(QAbstractButton*)));
 
     connect(m_playground, SIGNAL(newPieceLocated(int, int, Piece::STATUS)), this, SLOT(onNewPieceLocated(int, int, Piece::STATUS)));
+
+
 }
 
 void MainWindow::onBlackPlayerRoleChosen(QAbstractButton *button)
@@ -91,6 +93,9 @@ void MainWindow::onBlackPlayerRoleChosen(QAbstractButton *button)
     } else if (role == QMessageBox::NoRole) {
         m_blackPlayer = Player::TYPE::PLAYER;
         qDebug() << "[Log] 執黑者為玩家";
+    }
+    if(m_blackPlayer == Player::TYPE::AI) {
+        m_playground->aiPlay(Piece::BLACK, 1);
     }
 }
 

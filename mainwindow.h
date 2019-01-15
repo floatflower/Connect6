@@ -76,6 +76,9 @@ private slots:
                 m_state = Piece::STATUS::WHITE;
                 m_playground->printStatus();
                 this->actionCount = 0;
+                if(m_whitePlayer == Player::TYPE::AI) {
+                    m_playground->aiPlay(this->m_state, 2);
+                }
             }
         } else if(status == Piece::STATUS::WHITE) {
             m_buttons[x][y]->setWhite();
@@ -84,6 +87,9 @@ private slots:
                 m_state = Piece::STATUS::BLACK;
                 m_playground->printStatus();
                 this->actionCount = 0;
+                if(m_blackPlayer == Player::TYPE::AI) {
+                    m_playground->aiPlay(this->m_state, 2);
+                }
             }
         }
     }

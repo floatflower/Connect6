@@ -2,14 +2,18 @@
 #define PLAYGROUND_H
 
 #include <QObject>
+#include <QJsonDocument>
+#include <QString>
 #include <QVector>
 #include <cstdlib>
 #include <time.h>
+#include <QHash>
 
 #include "slot.h"
 #include "piece.h"
 
 #include <QDebug>
+#include "unistd.h"
 
 class PlayGround : public QObject
 {
@@ -24,21 +28,13 @@ public:
         slot->setStatus(status);
         if(status == Piece::STATUS::BLACK) {
             m_blacks.push_back(slot);
+            qDebug() << m_blacks;
         } else if(status == Piece::STATUS::WHITE) {
             m_white.push_back(slot);
+            qDebug() << m_white;
         }
     }
-    void aiPlay(Piece::STATUS pieceColor, int actionAmount) {
-        qDebug() << pieceColor << " " << actionAmount;
-        srand(time(nullptr));
-        for(int actionIndex = 0; actionIndex < actionAmount; actionIndex ++) {
-            int x = rand() % 19;
-            int y = rand() % 19;
-            this->updateSlot(x, y, pieceColor);
-            qDebug() << "Choose: x:" << x << " y:" << y;
-            emit newPieceLocated(y, x, pieceColor);
-        }
-    }
+    void aiPlay(Piece::STATUS pieceColor, int actionAmount);
 signals:
     void newPieceLocated(int positionX, int positionY, Piece::STATUS status);
 private:
