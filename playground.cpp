@@ -449,8 +449,8 @@ void PlayGround::aiPlay(Piece::STATUS pieceColor, int actionAmount) {
         headAlive = true;
         tailAlive = false;
         while(1) {
-            goLeft = goLeft + 1;
-            goDown = goDown - 1;
+            goLeft = goLeft - 1;
+            goDown = goDown + 1;
             if(goLeft >= 19 && goDown < 0) {
                 tailAlive = false;
                 break;
@@ -460,12 +460,11 @@ void PlayGround::aiPlay(Piece::STATUS pieceColor, int actionAmount) {
             // same color as ai
             if (m_slots[goDown][goLeft]->status() == playerColor) {
                 pieceCount ++;
-                if(((y + 1) >= 19 && (x - 1) < 0) || m_slots[y + 1][x - 1]->status() == playerColor) {
+                if(((y - 1) < 0 && (x + 1) >= 19) || m_slots[y - 1][x + 1]->status() == playerColor) {
                     headAlive = false;
-                    break;
-                } else if (m_slots[y + 1][x - 1]->status() == pieceColor) {
+                } else if (m_slots[y - 1][x + 1]->status() == pieceColor) {
                     headAlive = false;
-                } else if (m_slots[y + 1][x - 1]->status() == Piece::UNDEFINED){
+                } else if (m_slots[y - 1][x + 1]->status() == Piece::UNDEFINED){
                     headAlive = true;
                 }
             }
@@ -482,13 +481,13 @@ void PlayGround::aiPlay(Piece::STATUS pieceColor, int actionAmount) {
             }
 
             if(pieceCount >= 4 && headAlive) {
-                (playerThreaten.find(pieceCount))->push_back(m_slots[y + 1][x - 1]);
+                (playerThreaten.find(pieceCount))->push_back(m_slots[y - 1][x + 1]);
             }
             if (pieceCount >= 4 && tailAlive) {
                 (playerThreaten.find(pieceCount))->push_back(m_slots[goDown][goLeft]);
             }
-            if (pieceCount <= 3 && headAlive && m_slots[y + 1][x - 1]->status() == Piece::UNDEFINED){
-                (playerThreaten.find(pieceCount))->push_back(m_slots[y + 1][x - 1]);
+            if (pieceCount <= 3 && headAlive && m_slots[y - 1][x + 1]->status() == Piece::UNDEFINED){
+                (playerThreaten.find(pieceCount))->push_back(m_slots[y - 1][x + 1]);
             }
             if (pieceCount <= 3 && tailAlive && m_slots[goDown][goLeft]->status() == Piece::UNDEFINED) {
                 (playerThreaten.find(pieceCount))->push_back(m_slots[goDown][goLeft]);
